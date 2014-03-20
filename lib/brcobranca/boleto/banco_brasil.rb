@@ -75,12 +75,6 @@ module Brcobranca
         self.conta_corrente.modulo11_9to2_10_como_x
       end
 
-      # Logotipo do banco
-      # @return [Path] Caminho para o arquivo de logotipo do banco.
-      def logotipo
-        File.join(File.dirname(__FILE__),'..','arquivos','logos',"#{class_name}.eps")
-      end
-
       # Número seqüencial utilizado para identificar o boleto.
       # (Número de dígitos depende do tipo de convênio).
       # @raise  [Brcobranca::NaoImplementado] Caso o tipo de convênio não seja suportado pelo Brcobranca.
