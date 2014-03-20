@@ -1,4 +1,8 @@
 # -*- encoding: utf-8 -*-
+#
+# Sicredi
+# Documentação: http://www.shapeness.net.br/upload//Sicredi_240.pdf
+#
 module Brcobranca
   module Boleto
     class Sicredi < Base # Banco SICREDI
@@ -12,6 +16,7 @@ module Brcobranca
       validates_length_of :numero_documento, :maximum => 5, :message => 'deve ser menor ou igual a 5 dígitos.'
       validates_length_of :conta_corrente, :maximum => 5, :message => 'deve ser menor ou igual a 5 dígitos.'
       validates_length_of :carteira, :maximum => 2, :message => 'deve ser menor ou igual a 2 dígitos.'
+      validates_length_of :byte_idt, :minimum => 1, :maximum => 1, :message => 'deve ser 1 se o numero foi gerado pela agencia ou 2-9 se foi gerado pelo cedente'
 
       # Nova instancia do Bradesco
       # @param (see Brcobranca::Boleto::Base#initialize)
@@ -56,7 +61,7 @@ module Brcobranca
       # Nosso número para exibir no boleto.
       # @return [String]
       # @example
-      #  boleto.nosso_numero_boleto #=> "06/00000004042-8"
+      #  boleto.nosso_numero_boleto #=> "14/200022-5"
       def nosso_numero_boleto
         "#{numero_documento_with_byte_idt[0..1]}/#{numero_documento_with_byte_idt[2..-1]}-#{self.nosso_numero_dv}"
       end
