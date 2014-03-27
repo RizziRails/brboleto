@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in brcobranca.gemspec
+# Specify your gem's dependencies in brboleto.gemspec
 gemspec
 
 gem "rake"

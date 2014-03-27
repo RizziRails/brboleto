@@ -25,14 +25,14 @@ describe 'Muúltiplos boletos' do #:nodoc:[all]
   end
 
   it 'imprimir múltiplos boleto em lote' do
-    boleto_1 = Brcobranca::Boleto::BancoBrasil.new(@valid_attributes)
-    boleto_2 = Brcobranca::Boleto::Bradesco.new(@valid_attributes)
-    boleto_3 = Brcobranca::Boleto::BancoBrasil.new(@valid_attributes)
+    boleto_1 = Brboleto::Boleto::BancoBrasil.new(@valid_attributes)
+    boleto_2 = Brboleto::Boleto::Bradesco.new(@valid_attributes)
+    boleto_3 = Brboleto::Boleto::BancoBrasil.new(@valid_attributes)
 
     boletos = [boleto_1, boleto_2, boleto_3]
 
     %w| pdf jpg tif png ps |.each do |format|
-      file_body=Brcobranca::Boleto::Base.lote(boletos, {:formato => "#{format}".to_sym})
+      file_body=Brboleto::Boleto::Base.lote(boletos, {:formato => "#{format}".to_sym})
       tmp_file=Tempfile.new('foobar.' << format)
       tmp_file.puts file_body
       tmp_file.close

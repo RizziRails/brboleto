@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 # @author Kivanio Barbosa
-module Brcobranca
+module Brboleto
   # Métodos auxiliares de cálculos
   module Calculo
     # Calcula módulo 10 segundo a BACEN.
@@ -138,5 +138,5 @@ module Brcobranca
 end
 
 [String, Numeric].each do |klass|
-  klass.class_eval { include Brcobranca::Calculo }
+  klass.class_eval { include Brboleto::Calculo }
 end

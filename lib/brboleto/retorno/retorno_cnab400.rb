@@ -1,5 +1,5 @@
 require 'parseline'
-module Brcobranca
+module Brboleto
   module Retorno
     # Formato de Retorno CNAB 400
 

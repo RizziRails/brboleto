@@ -16,14 +16,14 @@ rescue LoadError
   require 'rghost_barcode'
 end
 
-module Brcobranca
+module Brboleto
   module Boleto
     module Template
       # Templates para usar com Rghost
       module Rghost
         extend self
         include RGhost unless self.include?(RGhost)
-        RGhost::Config::GS[:external_encoding] = Brcobranca.configuration.external_encoding
+        RGhost::Config::GS[:external_encoding] = Brboleto.configuration.external_encoding
 
         # Gera o boleto em usando o formato desejado [:pdf, :jpg, :tif, :png, :ps, :laserjet, ... etc]
         #
@@ -82,8 +82,8 @@ module Brcobranca
           doc.barcode_interleaved2of5(boleto.codigo_barras, :width => '10.3 cm', :height => '1.3 cm', :x => '0.7 cm', :y => '5.8 cm') if boleto.codigo_barras
 
           # Gerando stream
-          formato = (options.delete(:formato) || Brcobranca.configuration.formato)
-          resolucao = (options.delete(:resolucao) || Brcobranca.configuration.resolucao)
+          formato = (options.delete(:formato) || Brboleto.configuration.formato)
+          resolucao = (options.delete(:resolucao) || Brboleto.configuration.resolucao)
           doc.render_stream(formato.to_sym, :resolution => resolucao)
         end
 
@@ -114,8 +114,8 @@ module Brcobranca
 
           end
           # Gerando stream
-          formato = (options.delete(:formato) || Brcobranca.configuration.formato)
-          resolucao = (options.delete(:resolucao) || Brcobranca.configuration.resolucao)
+          formato = (options.delete(:formato) || Brboleto.configuration.formato)
+          resolucao = (options.delete(:resolucao) || Brboleto.configuration.resolucao)
           doc.render_stream(formato.to_sym, :resolution => resolucao)
         end
 

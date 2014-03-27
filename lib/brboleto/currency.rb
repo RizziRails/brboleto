@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 # @author Fernando Vieira do http://simplesideias.com.br
-module Brcobranca #:nodoc:[all]
+module Brboleto #:nodoc:[all]
   module Currency #:nodoc:[all]
     # Implementação feita por Fernando Vieira do http://simplesideias.com.br
     # post http://simplesideias.com.br/usando-number_to_currency-em-modelos-no-rails
@@ -23,7 +23,7 @@ module Brcobranca #:nodoc:[all]
     module Number #:nodoc:[all]
       def to_currency(options = {})
         number = self
-        default   = Brcobranca::Currency::DEFAULT
+        default   = Brboleto::Currency::DEFAULT
         options   = default.merge(options)
         precision = options[:precision] || default[:precision]
         unit      = options[:unit] || default[:unit]
@@ -60,9 +60,9 @@ module Brcobranca #:nodoc:[all]
 end
 
 [Numeric, String].each do |klass|
-  klass.class_eval { include Brcobranca::Currency::Number }
+  klass.class_eval { include Brboleto::Currency::Number }
 end
 
 [String].each do |klass|
-  klass.class_eval { include Brcobranca::Currency::String }
+  klass.class_eval { include Brboleto::Currency::String }
 end

@@ -4,7 +4,7 @@
 # O SICOB foi substiuido pelo SIGCB que é implementado por esta classe.
 # http://downloads.caixa.gov.br/_arquivos/cobranca_caixa_sigcb/manuais/CODIGO_BARRAS_SIGCB.PDF
 #
-module Brcobranca
+module Brboleto
   module Boleto
     class Caixa < Base # Caixa
 
@@ -24,7 +24,7 @@ module Brcobranca
       validates_length_of :numero_documento, :is => 15, :message => 'deve possuir 15 dígitos.'
 
       # Nova instância da CaixaEconomica
-      # @param (see Brcobranca::Boleto::Base#initialize)
+      # @param (see Brboleto::Boleto::Base#initialize)
       def initialize campos = {}
         campos = {
             :carteira => "#{MODALIDADE_COBRANCA[:sem_registro]}#{EMISSAO_BOLETO[:beneficiario]}"

@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Brcobranca::Boleto::Santander do
+describe Brboleto::Boleto::Santander do
   before(:each) do
     @valid_attributes = {
         :especie_documento => 'DS',
@@ -23,7 +23,7 @@ describe Brcobranca::Boleto::Santander do
   end
 
   it 'Criar nova instancia com atributos padrões' do
-    boleto_novo = Brcobranca::Boleto::Santander.new
+    boleto_novo = Brboleto::Boleto::Santander.new
     boleto_novo.banco.should eql('033')
     boleto_novo.especie_documento.should eql('DM')
     boleto_novo.especie.should eql('R$')
@@ -40,7 +40,7 @@ describe Brcobranca::Boleto::Santander do
   end
 
   it 'Criar nova instancia com atributos válidos' do
-    boleto_novo = Brcobranca::Boleto::Santander.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Santander.new(@valid_attributes)
     boleto_novo.banco.should eql('033')
     boleto_novo.especie_documento.should eql('DS')
     boleto_novo.especie.should eql('R$')
@@ -65,7 +65,7 @@ describe Brcobranca::Boleto::Santander do
 
   it 'Gerar boleto' do
     @valid_attributes[:data_documento] = Date.parse('2011/10/08')
-    boleto_novo = Brcobranca::Boleto::Santander.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Santander.new(@valid_attributes)
     boleto_novo.codigo_barras_segunda_parte.should eql('9189977500000900002670102')
     boleto_novo.codigo_barras.should eql('03391511500000025009189977500000900002670102')
     boleto_novo.codigo_barras.linha_digitavel.should eql('03399.18997 77500.000904 00026.701029 1 51150000002500')
@@ -73,47 +73,47 @@ describe Brcobranca::Boleto::Santander do
     @valid_attributes[:valor] = 54.00
     @valid_attributes[:numero_documento] = '90002720'
     @valid_attributes[:data_documento] = Date.parse('2012/09/07')
-    boleto_novo = Brcobranca::Boleto::Santander.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Santander.new(@valid_attributes)
     boleto_novo.codigo_barras_segunda_parte.should eql('9189977500000900027200102')
     boleto_novo.codigo_barras.should eql('03391545000000054009189977500000900027200102')
     boleto_novo.codigo_barras.linha_digitavel.should eql('03399.18997 77500.000904 00272.001025 1 54500000005400')
   end
 
   it 'Não permitir gerar boleto com atributos inválido' do
-    boleto_novo = Brcobranca::Boleto::Santander.new
-    lambda { boleto_novo.codigo_barras }.should raise_error(Brcobranca::BoletoInvalido)
+    boleto_novo = Brboleto::Boleto::Santander.new
+    lambda { boleto_novo.codigo_barras }.should raise_error(Brboleto::BoletoInvalido)
     boleto_novo.errors.count.should eql(2)
   end
 
   it 'Montar nosso_numero_dv' do
     @valid_attributes[:numero_documento] = '566612457800'
-    boleto_novo = Brcobranca::Boleto::Santander.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Santander.new(@valid_attributes)
     boleto_novo.nosso_numero_dv.should eql(2)
 
     @valid_attributes[:numero_documento] = '90002720'
-    boleto_novo = Brcobranca::Boleto::Santander.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Santander.new(@valid_attributes)
     boleto_novo.nosso_numero_dv.should eql(7)
   end
 
   it 'Montar nosso_numero_boleto' do
     @valid_attributes[:numero_documento] = '566612457800'
-    boleto_novo = Brcobranca::Boleto::Santander.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Santander.new(@valid_attributes)
     boleto_novo.nosso_numero_boleto.should eql('566612457800-2')
 
     @valid_attributes[:numero_documento] = '90002720'
-    boleto_novo = Brcobranca::Boleto::Santander.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Santander.new(@valid_attributes)
     boleto_novo.nosso_numero_boleto.should eql('000090002720-7')
   end
 
   it 'Busca logotipo do banco' do
-    boleto_novo = Brcobranca::Boleto::Santander.new
+    boleto_novo = Brboleto::Boleto::Santander.new
     File.exist?(boleto_novo.logotipo).should be_true
     File.stat(boleto_novo.logotipo).zero?.should be_false
   end
 
   it 'Gerar boleto nos formatos válidos com método to_' do
     @valid_attributes[:data_documento] = Date.parse('2009/08/13')
-    boleto_novo = Brcobranca::Boleto::Santander.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Santander.new(@valid_attributes)
 
     %w| pdf jpg tif png ps |.each do |format|
       file_body=boleto_novo.send("to_#{format}".to_sym)
@@ -129,7 +129,7 @@ describe Brcobranca::Boleto::Santander do
 
   it 'Gerar boleto nos formatos válidos' do
     @valid_attributes[:data_documento] = Date.parse('2009/08/13')
-    boleto_novo = Brcobranca::Boleto::Santander.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Santander.new(@valid_attributes)
 
     %w| pdf jpg tif png ps |.each do |format|
       file_body=boleto_novo.to(format)

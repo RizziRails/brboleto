@@ -1,4 +1,4 @@
-module Brcobranca
+module Brboleto
   module Boleto
     module Template
       module Base
@@ -8,11 +8,11 @@ module Brcobranca
 
           case template
           when :rghost
-            return Brcobranca::Boleto::Template::Rghost
+            return Brboleto::Boleto::Template::Rghost
           when :rghost_carne
-            return Brcobranca::Boleto::Template::RghostCarne
+            return Brboleto::Boleto::Template::RghostCarne
           else
-            return Brcobranca::Boleto::Template::Rghost
+            return Brboleto::Boleto::Template::Rghost
           end
 
         end

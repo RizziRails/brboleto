@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Brcobranca::Boleto::Hsbc do
+describe Brboleto::Boleto::Hsbc do
 
   before(:each) do
     @valid_attributes = {
@@ -26,7 +26,7 @@ describe Brcobranca::Boleto::Hsbc do
 
 
   it 'Criar nova instancia com atributos padrões' do
-    boleto_novo = Brcobranca::Boleto::Hsbc.new
+    boleto_novo = Brboleto::Boleto::Hsbc.new
     boleto_novo.banco.should eql('399')
     boleto_novo.especie_documento.should eql('DM')
     boleto_novo.especie.should eql('R$')
@@ -44,7 +44,7 @@ describe Brcobranca::Boleto::Hsbc do
   end
 
   it 'Criar nova instancia com atributos válidos' do
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
     boleto_novo.banco.should eql('399')
     boleto_novo.especie_documento.should eql('DM')
     boleto_novo.especie.should eql('R$')
@@ -74,7 +74,7 @@ describe Brcobranca::Boleto::Hsbc do
     @valid_attributes[:dias_vencimento] = 5
     @valid_attributes[:numero_documento] = '12345678'
     @valid_attributes[:conta_corrente] = '1122334'
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     boleto_novo.codigo_barras_segunda_parte.should eql('1122334000001234567809892')
     boleto_novo.codigo_barras.should eql('39998420100002952951122334000001234567809892')
@@ -86,7 +86,7 @@ describe Brcobranca::Boleto::Hsbc do
     @valid_attributes[:numero_documento] = '07778899'
     @valid_attributes[:conta_corrente] = '0016324'
     @valid_attributes[:agencia] = '1234'
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     boleto_novo.codigo_barras_segunda_parte.should eql('0016324000000777889924742')
     boleto_novo.codigo_barras.should eql('39993252300000934230016324000000777889924742')
@@ -94,8 +94,8 @@ describe Brcobranca::Boleto::Hsbc do
   end
 
   it 'Não permitir gerar boleto com atributos inválido' do
-    boleto_novo = Brcobranca::Boleto::Hsbc.new
-    lambda { boleto_novo.codigo_barras }.should raise_error(Brcobranca::BoletoInvalido)
+    boleto_novo = Brboleto::Boleto::Hsbc.new
+    lambda { boleto_novo.codigo_barras }.should raise_error(Brboleto::BoletoInvalido)
     boleto_novo.errors.count.should eql(3)
   end
 
@@ -104,7 +104,7 @@ describe Brcobranca::Boleto::Hsbc do
     @valid_attributes[:dias_vencimento] = 5
     @valid_attributes[:numero_documento] = '12345678'
     @valid_attributes[:conta_corrente] = '1122334'
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     boleto_novo.nosso_numero.should eql('0000012345678942')
 
@@ -112,7 +112,7 @@ describe Brcobranca::Boleto::Hsbc do
     @valid_attributes[:dias_vencimento] = 0
     @valid_attributes[:numero_documento] = '39104766'
     @valid_attributes[:conta_corrente] = '351202'
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     boleto_novo.nosso_numero.should eql('0000039104766340')
 
@@ -120,7 +120,7 @@ describe Brcobranca::Boleto::Hsbc do
     @valid_attributes[:dias_vencimento] = 0
     @valid_attributes[:numero_documento] = '39104766'
     @valid_attributes[:conta_corrente] = '351202'
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     boleto_novo.nosso_numero.should eql('0000039104766346')
 
@@ -128,14 +128,14 @@ describe Brcobranca::Boleto::Hsbc do
     @valid_attributes[:dias_vencimento] = 0
     @valid_attributes[:numero_documento] = '39104766'
     @valid_attributes[:conta_corrente] = '351202'
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     lambda { boleto_novo.nosso_numero }.should raise_error(ArgumentError)
   end
 
   it 'Montar nosso_numero_boleto' do
     @valid_attributes[:data_documento] = Date.parse('2009-08-14')
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     boleto_novo.numero_documento = '4042'
     boleto_novo.carteira = '06'
@@ -164,7 +164,7 @@ describe Brcobranca::Boleto::Hsbc do
   end
 
   it 'Montar agencia_conta_boleto' do
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     boleto_novo.agencia_conta_boleto.should eql('0061900')
     boleto_novo.agencia = '0719'
@@ -175,7 +175,7 @@ describe Brcobranca::Boleto::Hsbc do
   end
 
   it 'Busca logotipo do banco' do
-    boleto_novo = Brcobranca::Boleto::Hsbc.new
+    boleto_novo = Brboleto::Boleto::Hsbc.new
     File.exist?(boleto_novo.logotipo).should be_true
     File.stat(boleto_novo.logotipo).zero?.should be_false
   end
@@ -186,7 +186,7 @@ describe Brcobranca::Boleto::Hsbc do
     @valid_attributes[:dias_vencimento] = 5
     @valid_attributes[:numero_documento] = '12345678'
     @valid_attributes[:conta_corrente] = '1122334'
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     %w| pdf jpg tif png ps |.each do |format|
       file_body=boleto_novo.send("to_#{format}".to_sym)
@@ -206,7 +206,7 @@ describe Brcobranca::Boleto::Hsbc do
     @valid_attributes[:dias_vencimento] = 5
     @valid_attributes[:numero_documento] = '12345678'
     @valid_attributes[:conta_corrente] = '1122334'
-    boleto_novo = Brcobranca::Boleto::Hsbc.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Hsbc.new(@valid_attributes)
 
     %w| pdf jpg tif png ps |.each do |format|
       file_body=boleto_novo.to(format)

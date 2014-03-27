@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-module Brcobranca
+module Brboleto
   module Boleto
     class Bradesco < Base # Banco BRADESCO
 
@@ -9,7 +9,7 @@ module Brcobranca
       validates_length_of :carteira, :maximum => 2, :message => 'deve ser menor ou igual a 2 dígitos.'
 
       # Nova instancia do Bradesco
-      # @param (see Brcobranca::Boleto::Base#initialize)
+      # @param (see Brboleto::Boleto::Base#initialize)
       def initialize(campos={})
         campos = {:carteira => "06"}.merge!(campos)
         super(campos)

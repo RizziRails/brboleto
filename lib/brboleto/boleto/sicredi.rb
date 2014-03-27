@@ -3,7 +3,7 @@
 # Sicredi
 # Documentação: http://www.shapeness.net.br/upload//Sicredi_240.pdf
 #
-module Brcobranca
+module Brboleto
   module Boleto
     class Sicredi < Base # Banco SICREDI
       # <b>REQUERIDO</b>: Código do posto da cooperativa de crédito
@@ -19,7 +19,7 @@ module Brcobranca
       validates_length_of :byte_idt, :minimum => 1, :maximum => 1, :message => 'deve ser 1 se o numero foi gerado pela agencia ou 2-9 se foi gerado pelo cedente'
 
       # Nova instancia do Bradesco
-      # @param (see Brcobranca::Boleto::Base#initialize)
+      # @param (see Brboleto::Boleto::Base#initialize)
       def initialize(campos={})
         campos = {:carteira => '03', :especie_documento => 'A'}.merge!(campos)
         super(campos)

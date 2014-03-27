@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 # @author Kivanio Barbosa
-module Brcobranca
+module Brboleto
   # Métodos auxiliares de formatação
   module Formatacao
     # Formata como CPF
@@ -101,5 +101,5 @@ module Brcobranca
 end
 
 [String, Numeric].each do |klass|
-  klass.class_eval { include Brcobranca::Formatacao }
+  klass.class_eval { include Brboleto::Formatacao }
 end

@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-module Brcobranca
+module Brboleto
   module Limpeza
     # Transforma Float em String preservando o zero a direita.
     #
@@ -15,5 +15,5 @@ module Brcobranca
 end
 
 [Float, String].each do |klass|
-  klass.class_eval { include Brcobranca::Limpeza }
+  klass.class_eval { include Brboleto::Limpeza }
 end

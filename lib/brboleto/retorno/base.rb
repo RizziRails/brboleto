@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-module Brcobranca
+module Brboleto
   module Retorno
     class Base # Classe base para retornos bancários
       attr_accessor :agencia_com_dv

@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 # @author Kivanio Barbosa
-module Brcobranca
+module Brboleto
   # Métodos auxiliares de cálculos envolvendo Datas.
   module CalculoData
     # Calcula o número de dias corridos entre a <b>data base ("Fixada" em 07.10.1997)</b> e a <b>data de vencimento</b> desejada.
@@ -39,5 +39,5 @@ module Brcobranca
 end
 
 [Date].each do |klass|
-  klass.class_eval { include Brcobranca::CalculoData }
+  klass.class_eval { include Brboleto::CalculoData }
 end

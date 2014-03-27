@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 # @author Kivanio Barbosa
-module Brcobranca
+module Brboleto
   module Boleto
     # Classe base para todas as classes de boletos
     class Base
       extend Template::Base
 
       # Configura gerador de arquivo de boleto e código de barras.
-      extend define_template(Brcobranca.configuration.gerador)
-      include define_template(Brcobranca.configuration.gerador)
+      extend define_template(Brboleto.configuration.gerador)
+      include define_template(Brboleto.configuration.gerador)
 
       # Validações do Rails 3
       include ActiveModel::Validations
@@ -138,12 +138,12 @@ module Brcobranca
 
       # @abstract Deverá ser sobreescrito para cada banco.
       def nosso_numero_boleto
-        raise Brcobranca::NaoImplementado.new('Sobreescreva este método na classe referente ao banco que você esta criando')
+        raise Brboleto::NaoImplementado.new('Sobreescreva este método na classe referente ao banco que você esta criando')
       end
 
       # @abstract Deverá ser sobreescrito para cada banco.
       def agencia_conta_boleto
-        raise Brcobranca::NaoImplementado.new('Sobreescreva este método na classe referente ao banco que você esta criando')
+        raise Brboleto::NaoImplementado.new('Sobreescreva este método na classe referente ao banco que você esta criando')
       end
 
       # Valor total do documento: <b>quantidate * valor</b>
@@ -185,17 +185,17 @@ module Brcobranca
       # 10 a 19 | 10 |  Valor<br/>
       # 20 a 44 | 25 |  Campo Livre - As posições do campo livre ficam a critério de cada Banco arrecadador.<br/>
       #
-      # @raise [Brcobranca::BoletoInvalido] Caso as informações fornecidas não sejam suficientes ou sejam inválidas.
+      # @raise [Brboleto::BoletoInvalido] Caso as informações fornecidas não sejam suficientes ou sejam inválidas.
       # @return [String] código de barras formado por 44 caracteres numéricos.
       def codigo_barras
-        raise Brcobranca::BoletoInvalido.new(self) unless self.valid?
+        raise Brboleto::BoletoInvalido.new(self) unless self.valid?
         codigo = codigo_barras_primeira_parte #18 digitos
         codigo << codigo_barras_segunda_parte #25 digitos
         if codigo =~ /^(\d{4})(\d{39})$/
           codigo_dv = codigo.modulo11_2to9
           "#{$1}#{codigo_dv}#{$2}"
         else
-          raise Brcobranca::BoletoInvalido.new(self)
+          raise Brboleto::BoletoInvalido.new(self)
         end
       end
 
@@ -203,7 +203,7 @@ module Brcobranca
       #
       # @abstract Deverá ser sobreescrito para cada banco.
       def codigo_barras_segunda_parte
-        raise Brcobranca::NaoImplementado.new('Sobreescreva este método na classe referente ao banco que você esta criando')
+        raise Brboleto::NaoImplementado.new('Sobreescreva este método na classe referente ao banco que você esta criando')
       end
 
       private

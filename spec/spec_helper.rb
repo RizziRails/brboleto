@@ -4,7 +4,7 @@ $:.push File.join(File.dirname(__FILE__), '..', 'lib')
 require 'rubygems'
 require 'tempfile'
 require 'bundler/setup'
-require 'brcobranca'
+require 'brboleto'
 require 'rghost'
 
 RGhost::Config::GS[:path] = '/usr/local/bin/gs'

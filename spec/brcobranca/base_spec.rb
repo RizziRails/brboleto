@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
-module Brcobranca #:nodoc:[all]
+module Brboleto #:nodoc:[all]
   module Boleto #:nodoc:[all]
     describe Base do
       before(:each) do
@@ -26,7 +26,7 @@ module Brcobranca #:nodoc:[all]
       end
 
       it 'Criar nova instancia com atributos padrões' do
-        boleto_novo = Brcobranca::Boleto::Base.new
+        boleto_novo = Brboleto::Boleto::Base.new
         boleto_novo.especie_documento.should eql('DM')
         boleto_novo.especie.should eql('R$')
         boleto_novo.moeda.should eql('9')
@@ -42,7 +42,7 @@ module Brcobranca #:nodoc:[all]
       end
 
       it 'Criar nova instancia com atributos válidos' do
-        boleto_novo = Brcobranca::Boleto::Base.new(@valid_attributes)
+        boleto_novo = Brboleto::Boleto::Base.new(@valid_attributes)
         boleto_novo.especie_documento.should eql('DM')
         boleto_novo.especie.should eql('R$')
         boleto_novo.moeda.should eql('9')
@@ -66,7 +66,7 @@ module Brcobranca #:nodoc:[all]
       end
 
       it 'Calcula agencia_dv' do
-        boleto_novo = Brcobranca::Boleto::Base.new(@valid_attributes)
+        boleto_novo = Brboleto::Boleto::Base.new(@valid_attributes)
         boleto_novo.agencia = '85068014982'
         boleto_novo.agencia_dv.should eql(9)
         boleto_novo.agencia = '05009401448'
@@ -94,7 +94,7 @@ module Brcobranca #:nodoc:[all]
       end
 
       it 'Calcula conta_corrente_dv' do
-        boleto_novo = Brcobranca::Boleto::Base.new(@valid_attributes)
+        boleto_novo = Brboleto::Boleto::Base.new(@valid_attributes)
         boleto_novo.conta_corrente = '85068014982'
         boleto_novo.conta_corrente_dv.should eql(9)
         boleto_novo.conta_corrente = '05009401448'
@@ -122,7 +122,7 @@ module Brcobranca #:nodoc:[all]
       end
 
       it 'Calcula o valor do documento' do
-        boleto_novo = Brcobranca::Boleto::Base.new(@valid_attributes)
+        boleto_novo = Brboleto::Boleto::Base.new(@valid_attributes)
         boleto_novo.quantidade = 1
         boleto_novo.valor = 1
         boleto_novo.valor_documento.should eql(1.0)
@@ -144,7 +144,7 @@ module Brcobranca #:nodoc:[all]
       end
 
       it 'Calcula data_vencimento' do
-        boleto_novo = Brcobranca::Boleto::Base.new(@valid_attributes)
+        boleto_novo = Brboleto::Boleto::Base.new(@valid_attributes)
         boleto_novo.data_documento = Date.parse '2008-02-01'
         boleto_novo.dias_vencimento = 1
         boleto_novo.data_vencimento.to_s.should eql('2008-02-02')
@@ -163,19 +163,19 @@ module Brcobranca #:nodoc:[all]
       end
 
       it 'Mostrar aviso sobre sobrecarga de métodos padrões' do
-        boleto_novo = Brcobranca::Boleto::Base.new(@valid_attributes)
-        lambda { boleto_novo.codigo_barras_segunda_parte }.should raise_error(Brcobranca::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
-        lambda { boleto_novo.nosso_numero_boleto }.should raise_error(Brcobranca::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
-        lambda { boleto_novo.agencia_conta_boleto }.should raise_error(Brcobranca::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
+        boleto_novo = Brboleto::Boleto::Base.new(@valid_attributes)
+        lambda { boleto_novo.codigo_barras_segunda_parte }.should raise_error(Brboleto::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
+        lambda { boleto_novo.nosso_numero_boleto }.should raise_error(Brboleto::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
+        lambda { boleto_novo.agencia_conta_boleto }.should raise_error(Brboleto::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
       end
 
       it 'Incluir módulos de template na classe' do
-        Brcobranca::Boleto::Base.respond_to?(:lote).should be_true
-        Brcobranca::Boleto::Base.respond_to?(:to).should be_true
+        Brboleto::Boleto::Base.respond_to?(:lote).should be_true
+        Brboleto::Boleto::Base.respond_to?(:to).should be_true
       end
 
       it 'Incluir módulos de template na instancia' do
-        boleto_novo = Brcobranca::Boleto::Base.new
+        boleto_novo = Brboleto::Boleto::Base.new
         boleto_novo.respond_to?(:lote).should be_true
         boleto_novo.respond_to?(:to).should be_true
       end

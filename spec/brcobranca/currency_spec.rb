@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
-module Brcobranca #:nodoc:[all]
+module Brboleto #:nodoc:[all]
   module Currency #:nodoc:[all]
     describe String do
       it 'should return true if value seted is a valid ruby number' do

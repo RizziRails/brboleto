@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-module Brcobranca
+module Brboleto
   module Boleto
     class Itau < Base # Banco Itaú
 
@@ -13,7 +13,7 @@ module Brcobranca
       validates_length_of :seu_numero, :maximum => 7, :message => 'deve ser menor ou igual a 7 dígitos.'
 
       # Nova instancia do Itau
-      # @param (see Brcobranca::Boleto::Base#initialize)
+      # @param (see Brboleto::Boleto::Base#initialize)
       def initialize(campos={})
         campos = {:carteira => '175'}.merge!(campos)
         super(campos)

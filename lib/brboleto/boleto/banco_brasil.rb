@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-module Brcobranca
+module Brboleto
   module Boleto
     class BancoBrasil < Base # Banco do Brasil
 
@@ -29,7 +29,7 @@ module Brcobranca
       end
 
       # Nova instancia do BancoBrasil
-      # @param (see Brcobranca::Boleto::Base#initialize)
+      # @param (see Brboleto::Boleto::Base#initialize)
       def initialize(campos={})
         campos = {:carteira => '18', :codigo_servico => false}.merge!(campos)
         super(campos)
@@ -77,7 +77,7 @@ module Brcobranca
 
       # Número seqüencial utilizado para identificar o boleto.
       # (Número de dígitos depende do tipo de convênio).
-      # @raise  [Brcobranca::NaoImplementado] Caso o tipo de convênio não seja suportado pelo Brcobranca.
+      # @raise  [Brboleto::NaoImplementado] Caso o tipo de convênio não seja suportado pelo Brboleto.
       #
       # @overload numero_documento
       #   Nosso Número de 17 dígitos com Convenio de 8 dígitos.
@@ -105,7 +105,7 @@ module Brcobranca
         when 6
           self.codigo_servico ? 17 : 5
         else
-          raise Brcobranca::NaoImplementado.new('Tipo de convênio não implementado.')
+          raise Brboleto::NaoImplementado.new('Tipo de convênio não implementado.')
         end
         quantidade ? @numero_documento.to_s.rjust(quantidade,'0') : @numero_documento
       end

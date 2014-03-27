@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Brcobranca::Boleto::Sicredi do
+describe Brboleto::Boleto::Sicredi do
   before(:each) do
     @valid_attributes = {
         :especie_documento => 'A',
@@ -26,7 +26,7 @@ describe Brcobranca::Boleto::Sicredi do
   end
 
   it 'Criar nova instancia com atributos padrões' do
-    boleto_novo = Brcobranca::Boleto::Sicredi.new
+    boleto_novo = Brboleto::Boleto::Sicredi.new
     boleto_novo.banco.should eql('748')
     boleto_novo.especie_documento.should eql('A')
     boleto_novo.especie.should eql('R$')
@@ -44,7 +44,7 @@ describe Brcobranca::Boleto::Sicredi do
   end
 
   it 'Criar nova instancia com atributos válidos' do
-    boleto_novo = Brcobranca::Boleto::Sicredi.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Sicredi.new(@valid_attributes)
     boleto_novo.banco.should eql('748')
     boleto_novo.especie_documento.should eql('A')
     boleto_novo.especie.should eql('R$')
@@ -79,7 +79,7 @@ describe Brcobranca::Boleto::Sicredi do
     @valid_attributes[:posto] = '18'
     @valid_attributes[:aceite] = 'N'
     @valid_attributes[:byte_idt] = '2'
-    boleto_novo = Brcobranca::Boleto::Sicredi.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Sicredi.new(@valid_attributes)
 
     boleto_novo.codigo_barras.linha_digitavel.should eql('74893.11220 13871.512342 18123.451009 1 52220000295295')
     boleto_novo.codigo_barras_segunda_parte.should eql('3112213871512341812345100')
@@ -87,13 +87,13 @@ describe Brcobranca::Boleto::Sicredi do
   end
 
   it 'Não permitir gerar boleto com atributos inválido' do
-    boleto_novo = Brcobranca::Boleto::Sicredi.new
-    lambda { boleto_novo.codigo_barras }.should raise_error(Brcobranca::BoletoInvalido)
+    boleto_novo = Brboleto::Boleto::Sicredi.new
+    lambda { boleto_novo.codigo_barras }.should raise_error(Brboleto::BoletoInvalido)
     boleto_novo.errors.count.should eql(4)
   end
 
   it 'Montar nosso_numero_boleto' do
-    boleto_novo = Brcobranca::Boleto::Sicredi.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Sicredi.new(@valid_attributes)
 
     boleto_novo.byte_idt = '2'
     boleto_novo.agencia = '1234'
@@ -106,7 +106,7 @@ describe Brcobranca::Boleto::Sicredi do
   end
 
   it 'Montar agencia_conta_boleto' do
-    boleto_novo = Brcobranca::Boleto::Sicredi.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Sicredi.new(@valid_attributes)
 
     boleto_novo.agencia = '1234'
     boleto_novo.posto = '18'
@@ -115,13 +115,13 @@ describe Brcobranca::Boleto::Sicredi do
   end
 
   it 'Busca logotipo do banco' do
-    boleto_novo = Brcobranca::Boleto::Sicredi.new
+    boleto_novo = Brboleto::Boleto::Sicredi.new
     File.exist?(boleto_novo.logotipo).should be_true
     File.stat(boleto_novo.logotipo).zero?.should be_false
   end
 
   it 'Gerar boleto nos formatos válidos com método to_' do
-    boleto_novo = Brcobranca::Boleto::Sicredi.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Sicredi.new(@valid_attributes)
 
     %w| pdf jpg tif png ps |.each do |format|
       file_body=boleto_novo.send("to_#{format}".to_sym)
@@ -142,7 +142,7 @@ describe Brcobranca::Boleto::Sicredi do
     @valid_attributes[:numero_documento] = '86452'
     @valid_attributes[:conta_corrente] = '03005'
     @valid_attributes[:agencia] = '1172'
-    boleto_novo = Brcobranca::Boleto::Sicredi.new(@valid_attributes)
+    boleto_novo = Brboleto::Boleto::Sicredi.new(@valid_attributes)
 
     %w| pdf jpg tif png ps |.each do |format|
       file_body=boleto_novo.to(format)

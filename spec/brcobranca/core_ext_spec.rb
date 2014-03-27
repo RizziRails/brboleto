@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
-module Brcobranca
+module Brboleto
   describe Formatacao do
     it 'Formata o CPF' do
       98789298790.to_br_cpf.should eql('987.892.987-90')

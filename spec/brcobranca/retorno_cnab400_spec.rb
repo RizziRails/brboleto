@@ -1,19 +1,19 @@
 # encoding: utf-8
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Brcobranca::Retorno::RetornoCnab400 do
+describe Brboleto::Retorno::RetornoCnab400 do
   before(:each) do
     @arquivo = File.join(File.dirname(__FILE__), '..', 'arquivos', 'CNAB400.RET')
   end
 
   it 'Ignora primeira linha que é header' do
-    pagamentos = Brcobranca::Retorno::RetornoCnab400.load_lines(@arquivo)
+    pagamentos = Brboleto::Retorno::RetornoCnab400.load_lines(@arquivo)
     pagamento = pagamentos.first
     pagamento.sequencial.should eql('000002')
   end
 
   it 'Transforma arquivo de retorno em objetos de retorno retornando somente as linhas de pagamentos de títulos sem registro' do
-    pagamentos = Brcobranca::Retorno::RetornoCnab400.load_lines(@arquivo)
+    pagamentos = Brboleto::Retorno::RetornoCnab400.load_lines(@arquivo)
     pagamentos.size.should == 53 #deve ignorar a primeira linha que é header
     pagamento = pagamentos.first
     pagamento.agencia_com_dv.should eql('0730')

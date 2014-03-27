@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.join(File.dirname(__FILE__))
-require 'brcobranca/calculo'
-require 'brcobranca/limpeza'
-require 'brcobranca/formatacao'
-require 'brcobranca/calculo_data'
-require 'brcobranca/currency'
+require 'brboleto/calculo'
+require 'brboleto/limpeza'
+require 'brboleto/formatacao'
+require 'brboleto/calculo_data'
+require 'brboleto/currency'
 
 begin
   require 'date'
@@ -23,7 +23,7 @@ rescue LoadError
 end
 
 
-module Brcobranca
+module Brboleto
   # Exception lançada quando algum tipo de boleto soicitado ainda não tiver sido implementado.
   class NaoImplementado < NotImplementedError
   end
@@ -31,7 +31,7 @@ module Brcobranca
   # Exception lançada quando os dados informados para o boleto estão inválidos.
   #
   # Você pode usar assim na sua aplicação:
-  #   rescue Brcobranca::BoletoInvalido => invalido
+  #   rescue Brboleto::BoletoInvalido => invalido
   #   puts invalido.errors
   class BoletoInvalido < StandardError
 
@@ -42,12 +42,12 @@ module Brcobranca
     end
   end
 
-  # Configurações do Brcobranca.
+  # Configurações do Brboleto.
   #
   # Para mudar as configurações padrão, você pode fazer assim:
   # config/environments/test.rb:
   #
-  #     Brcobranca.setup do |config|
+  #     Brboleto.setup do |config|
   #       config.formato = :gif
   #     end
   #
@@ -95,31 +95,31 @@ module Brcobranca
 
   # Módulo para classes de boletos
   module Boleto
-    autoload :Base,          'brcobranca/boleto/base'
-    autoload :BancoBrasil,   'brcobranca/boleto/banco_brasil'
-    autoload :Itau,          'brcobranca/boleto/itau'
-    autoload :Hsbc,          'brcobranca/boleto/hsbc'
-    autoload :Real,          'brcobranca/boleto/real'
-    autoload :Bradesco,      'brcobranca/boleto/bradesco'
-    autoload :Unibanco,      'brcobranca/boleto/unibanco'
-    autoload :Caixa,         'brcobranca/boleto/caixa'
-    autoload :Sicredi,       'brcobranca/boleto/sicredi'
-    autoload :Santander,     'brcobranca/boleto/santander'
+    autoload :Base,          'brboleto/boleto/base'
+    autoload :BancoBrasil,   'brboleto/boleto/banco_brasil'
+    autoload :Itau,          'brboleto/boleto/itau'
+    autoload :Hsbc,          'brboleto/boleto/hsbc'
+    autoload :Real,          'brboleto/boleto/real'
+    autoload :Bradesco,      'brboleto/boleto/bradesco'
+    autoload :Unibanco,      'brboleto/boleto/unibanco'
+    autoload :Caixa,         'brboleto/boleto/caixa'
+    autoload :Sicredi,       'brboleto/boleto/sicredi'
+    autoload :Santander,     'brboleto/boleto/santander'
 
     # Módulos para classes de template
     module Template
-      autoload :Base,   'brcobranca/boleto/template/base'
-      autoload :Rghost, 'brcobranca/boleto/template/rghost'
-      autoload :RghostCarne, 'brcobranca/boleto/template/rghost_carne'
+      autoload :Base,   'brboleto/boleto/template/base'
+      autoload :Rghost, 'brboleto/boleto/template/rghost'
+      autoload :RghostCarne, 'brboleto/boleto/template/rghost_carne'
     end
   end
 
   # Módulos para classes de retorno bancário
   module Retorno
-    autoload :Base,           'brcobranca/retorno/base'
-    autoload :RetornoCbr643,  'brcobranca/retorno/retorno_cbr643'
-    autoload :RetornoCnab240,  'brcobranca/retorno/retorno_cnab240'
-    autoload :RetornoCnab400,  'brcobranca/retorno/retorno_cnab400'
+    autoload :Base,           'brboleto/retorno/base'
+    autoload :RetornoCbr643,  'brboleto/retorno/retorno_cbr643'
+    autoload :RetornoCnab240,  'brboleto/retorno/retorno_cnab240'
+    autoload :RetornoCnab400,  'brboleto/retorno/retorno_cnab400'
   end
 end
 

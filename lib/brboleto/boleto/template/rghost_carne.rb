@@ -16,14 +16,14 @@ rescue LoadError
   require 'rghost_barcode'
 end
 
-module Brcobranca
+module Brboleto
   module Boleto
     module Template
       # Templates para usar com Rghost
       module RghostCarne
         extend self
         include RGhost unless self.include?(RGhost)
-        RGhost::Config::GS[:external_encoding] = Brcobranca.configuration.external_encoding
+        RGhost::Config::GS[:external_encoding] = Brboleto.configuration.external_encoding
 
         # Gera o boleto em usando o formato desejado [:pdf, :jpg, :tif, :png, :ps, :laserjet, ... etc]
         #
@@ -82,8 +82,8 @@ module Brcobranca
           modelo_carne_build_data_right(doc, boleto, colunas, linhas)
 
           # Gerando stream
-          formato = (options.delete(:formato) || Brcobranca.configuration.formato)
-          resolucao = (options.delete(:resolucao) || Brcobranca.configuration.resolucao)
+          formato = (options.delete(:formato) || Brboleto.configuration.formato)
+          resolucao = (options.delete(:resolucao) || Brboleto.configuration.resolucao)
           doc.render_stream(formato.to_sym, :resolution => resolucao)
         end
 
@@ -131,8 +131,8 @@ module Brcobranca
           end
 
           # Gerando stream
-          formato = (options.delete(:formato) || Brcobranca.configuration.formato)
-          resolucao = (options.delete(:resolucao) || Brcobranca.configuration.resolucao)
+          formato = (options.delete(:formato) || Brboleto.configuration.formato)
+          resolucao = (options.delete(:resolucao) || Brboleto.configuration.resolucao)
 
           doc.render_stream(formato.to_sym, :resolution => resolucao)
         end
