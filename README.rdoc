@@ -1,15 +1,12 @@
-= brcobranca
+= brboleto
 
-* http://rubygems.org/gems/brcobranca
+Gem para emissão de boletos bancários em Ruby on Rails 3.x e 4.x
 
-== EXEMPLO
+== COMPATIBILIDADE
 
-* http://www.boletorails.com.br
-* http://github.com/kivanio/brcobranca_exemplo
-
-== DESCRIÇÃO
-
-Gem para emissão de bloquetos de cobrança para bancos brasileiros
+* Rails 3.x e 4.x
+* Ruby 2.0, 2.1.0 e 2.1.1
+* Esta gem não é compatível com Ruby 1.9.3
 
 == Bancos Disponíveis
 
@@ -26,7 +23,7 @@ Gem para emissão de bloquetos de cobrança para bancos brasileiros
   * TODAS AS CARTEIRAS PRESENTES NA DOCUMENTAÇÃO
 
 * Banco Caixa
-  * Sem registro (SR)  by Túlio Ornelas - https://github.com/tulios
+  * Sem registro (SR) by Túlio Ornelas - https://github.com/tulios
 
 * Banco SICREDI
 
@@ -39,46 +36,44 @@ Gem para emissão de bloquetos de cobrança para bancos brasileiros
 * CBR643
 * CNAB240
 
-== Está perdido?
-
-Veja a documentação da versão atual em http://rubydoc.info/gems/brcobranca e da versão de desenvolvimento em http://rubydoc.info/github/kivanio/brcobranca/master/frames
-
 == REQUISITOS
 
-* rghost >= 0.8
+* rghost >= 0.9.4
 * rghost_barcode >= 0.9
 * parseline >= 1.0.3
 * GhostScript > 8.0
 
 == INSTALAÇÃO
 
-* sudo gem install brcobranca
+Acrescente no seu Gemfile
 
-== FONTES
+```
+gem 'brcobranca'
+```
 
-* http://github.com/kivanio/brcobranca/tree/master
+e rode
 
-== WIKI
+```
+bundle
+```
 
-* http://wiki.github.com/kivanio/brcobranca
+Essa gem requer que o programa GhostScipt esteja rodando no seu sistema . Para instalar o GhostScript:
 
-== PROBLEMAS? QUERENDO MAIS?
+Ubuntu / Debian
 
-Informe em http://github.com/kivanio/brcobranca/issues
+```
+aptitude install ghostscript
+```
 
-== Gostou?
 
-Recomende-nos no http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa
+No Mac OS X, instala através do Homebrew 
 
-== APOIO
-
-{RubyMine}[http://www.jetbrains.com/ruby/features?utm_source=RubyMineUser&utm_medium=Banner&utm_campaign=RubyMine]
-http://www.jetbrains.com/ruby/features/ruby_banners/ruby1/ruby468x60_rubin.gif
+```
+brew install ghostscript
+```
 
 == LICENÇA
 
-BSD
+Licença BSD
 
-De brasileiro para brasileiros.
-
-Copyleft 2009 Kivanio Barbosa
+Baseado na gem brcobranca de Kivanio Barbosa
