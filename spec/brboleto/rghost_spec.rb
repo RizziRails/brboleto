@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
 describe 'RGhost' do
@@ -33,5 +32,4 @@ describe 'RGhost' do
     s=`#{RGhost::Config::GS[:path]} --version`
     s.should =~ /[8-9]\.[0-9]/
   end
-
 end

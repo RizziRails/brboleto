@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
 describe Brboleto::Boleto::Caixa do #:nodoc:[all]

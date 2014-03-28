@@ -1,4 +1,3 @@
-# encoding: utf-8
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Brboleto::Retorno::RetornoCnab400 do
@@ -54,5 +53,3 @@ describe Brboleto::Retorno::RetornoCnab400 do
     # parse.field :valor_ajuste,320..331
   end
 end
-
-

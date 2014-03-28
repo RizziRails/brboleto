@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
 module Brboleto
@@ -187,5 +186,4 @@ module Brboleto
       (Date.parse '2008-04-08').to_juliano.should eql('0998')
     end
   end
-
 end

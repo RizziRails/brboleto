@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Brboleto::Retorno::RetornoCnab240 do
@@ -48,5 +47,3 @@ describe Brboleto::Retorno::RetornoCnab240 do
     #pagamento.valor_ajuste.should eql('')
   end
 end
-
-

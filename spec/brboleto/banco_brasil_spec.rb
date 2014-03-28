@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
 describe Brboleto::Boleto::BancoBrasil do #:nodoc:[all]
@@ -315,5 +314,4 @@ describe Brboleto::Boleto::BancoBrasil do #:nodoc:[all]
       File.exist?(tmp_file.path).should be_false
     end
   end
-
 end
