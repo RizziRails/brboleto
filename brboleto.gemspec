@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.requirements = ["GhostScript > 8.0, para gear PDF e código de Barras"]
 
-  s.add_runtime_dependency(%q<rghost>, ["~> 0.9"])
+  s.add_runtime_dependency(%q<rghost>, [">= 0.9.4"])
   s.add_runtime_dependency(%q<rghost_barcode>, ["~> 0.9"])
   s.add_runtime_dependency(%q<parseline>, [">= 1.0.3"])
   s.add_runtime_dependency(%q<activemodel>, [">= 3"])
