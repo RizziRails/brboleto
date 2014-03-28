@@ -47,11 +47,11 @@ Gem para emissão de boletos bancários em Ruby on Rails 3.x e 4.x
 
 Acrescente no seu Gemfile
 
-```
-gem 'brcobranca'
+`````
+gem 'brboleto'
 ```
 
-e rode
+depois rode o comando
 
 ```
 bundle
