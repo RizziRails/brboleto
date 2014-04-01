@@ -1,14 +1,14 @@
-# brboleto
+= brboleto
 
 Gem para emissão de boletos bancários em Ruby on Rails 3.x e 4.x
 
-## COMPATIBILIDADE
+== COMPATIBILIDADE
 
 * Rails 3.x e 4.x
 * Ruby 2.0, 2.1.0 e 2.1.1
 * Esta gem não é compatível com Ruby 1.9.3
 
-## Bancos Disponíveis
+== Bancos Disponíveis
 
 * Banco do Brasil
   * TODAS AS CARTEIRAS PRESENTES NA DOCUMENTAÇÃO
@@ -31,19 +31,19 @@ Gem para emissão de boletos bancários em Ruby on Rails 3.x e 4.x
   * Sem registro
   * Com registro
 
-## Retornos Disponíveis
+== Retornos Disponíveis
 
 * CBR643
 * CNAB240
 
-## REQUISITOS
+== REQUISITOS
 
 * rghost >= 0.9.4
 * rghost_barcode >= 0.9
 * parseline >= 1.0.3
 * GhostScript > 8.0
 
-## INSTALAÇÃO
+== INSTALAÇÃO
 
 Acrescente no seu Gemfile
 
@@ -63,7 +63,7 @@ No Mac OS X, instala através do Homebrew
 
     brew install ghostscript
 
-## LICENÇA
+== LICENÇA
 
 Licença BSD
 
