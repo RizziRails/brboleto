@@ -1,3 +1,15 @@
+== 4.0.0 27-03-2014
+* Fork do BrCobranca, agora chamado BrBoleto
+* Compatibilidade com Rails 4
+* Remove bancos antigos: Unibanco e Real
+* Utiliza logotipos vetorias dos bancos
+* Conformidad com CNAB (Sacado e Cedente agora são referidos como Pagador e Beneficiário, respectivamente) ???????
+* Remove compatibilidade com Ruby 1.9.3
+* Requer rghost 0.9.4 para evitar problemas com acentos
+* Documentação reescrita, com exemplos de utilização
+* Limpeza de arquvos desnecessários
+TODO: Utilização do Jeweler para facilitar releases constantes da gem
+
 == 3.1.2 13-02-2013
 
 * Adicionado suporte ao valor da tarifa no arquivo retorno CNAB240 by Felipe Munhoz
