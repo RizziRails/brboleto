@@ -113,12 +113,4 @@ module Brboleto
     end
   end
 
-  # Módulos para classes de retorno bancário
-  module Retorno
-    autoload :Base,           'brboleto/retorno/base'
-    autoload :RetornoCbr643,  'brboleto/retorno/retorno_cbr643'
-    autoload :RetornoCnab240,  'brboleto/retorno/retorno_cnab240'
-    autoload :RetornoCnab400,  'brboleto/retorno/retorno_cnab400'
-  end
 end
-

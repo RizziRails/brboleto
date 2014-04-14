@@ -8,6 +8,7 @@
 * Requer rghost 0.9.4 para evitar problemas com acentos
 * Documentação reescrita, com exemplos de utilização
 * Limpeza de arquvos desnecessários
+* Remove suporte a retornos bancários (deve estar em uma gem separada)
 TODO: Utilização do Jeweler para facilitar releases constantes da gem
 
 == 3.1.2 13-02-2013
