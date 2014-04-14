@@ -1,4 +1,3 @@
-$:.push File.join(File.dirname(__FILE__))
 require 'brboleto/calculo'
 require 'brboleto/limpeza'
 require 'brboleto/formatacao'
@@ -21,9 +20,9 @@ rescue LoadError
   require 'active_model'
 end
 
-
 module Brboleto
-  # Exception lançada quando algum tipo de boleto soicitado ainda não tiver sido implementado.
+  # Exception lançada quando algum tipo de boleto
+  # soicitado ainda não tiver sido implementado.
   class NaoImplementado < NotImplementedError
   end
 
@@ -33,7 +32,6 @@ module Brboleto
   #   rescue Brboleto::BoletoInvalido => invalido
   #   puts invalido.errors
   class BoletoInvalido < StandardError
-
     # Atribui o objeto boleto e pega seus erros de validação
     def initialize(boleto)
       errors = boleto.errors.full_messages.join(', ')
@@ -59,7 +57,7 @@ module Brboleto
     # Formato do arquivo de boleto a ser gerado.
     # @return [Symbol]
     # @param  [Symbol] (Padrão: :pdf)
-    # @see http://wiki.github.com/shairontoledo/rghost/supported-devices-drivers-and-formats Veja mais formatos na documentação do rghost.
+    # @see Veja mais formatos na documentação do rghost http://bit.ly/1hOCcnO
     attr_accessor :formato
 
     # Resolução em pixels do arquivo gerado.
@@ -112,5 +110,4 @@ module Brboleto
       autoload :RghostCarne, 'brboleto/boleto/template/rghost_carne'
     end
   end
-
 end
