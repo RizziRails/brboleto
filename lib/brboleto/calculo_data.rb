@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-# @author Kivanio Barbosa
 module Brboleto
   # Métodos auxiliares de cálculos envolvendo Datas.
   module CalculoData

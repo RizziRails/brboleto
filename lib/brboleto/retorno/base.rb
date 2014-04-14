@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Brboleto
   module Retorno
     class Base # Classe base para retornos bancários

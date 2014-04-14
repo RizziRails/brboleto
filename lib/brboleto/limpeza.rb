@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 module Brboleto
   module Limpeza
     # Transforma Float em String preservando o zero a direita.

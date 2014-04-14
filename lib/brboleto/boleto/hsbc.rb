@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 module Brboleto
   module Boleto
     class Hsbc < Base # Banco HSBC

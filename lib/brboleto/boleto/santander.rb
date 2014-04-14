@@ -1,6 +1,3 @@
-# -*- encoding: utf-8 -*-
-# @author Kivanio Barbosa
-# @author Ronaldo Araujo
 module Brboleto
   module Boleto
     class Santander < Base # Banco Santander

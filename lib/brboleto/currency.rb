@@ -1,6 +1,3 @@
-# -*- encoding: utf-8 -*-
-
-# @author Fernando Vieira do http://simplesideias.com.br
 module Brboleto #:nodoc:[all]
   module Currency #:nodoc:[all]
     # Implementação feita por Fernando Vieira do http://simplesideias.com.br

@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 #
 # Sicredi
 # Documentação: http://www.shapeness.net.br/upload//Sicredi_240.pdf

@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 #
 # A Caixa tem dois padrões para a geração de boleto: SIGCB e SICOB.
 # O SICOB foi substiuido pelo SIGCB que é implementado por esta classe.
