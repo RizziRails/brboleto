@@ -65,11 +65,9 @@ module Brboleto
     # @param  [Integer] (Padrão: 150)
     attr_accessor :resolucao
 
-    # Ajusta o Encoding externo (do arquivo) - Ruby 1.9
-    # Ex: Caso esteja dando UndefinedConversionError - from ASCII-8BIT to UTF-8
-    # configurar com a string 'ascii-8bit'
+    # Ajusta o encoding do PDF
     # @return [String]
-    # @param  [String] (Padrão: nil)
+    # @param  [String] (Padrão: ascii-8bit)
     attr_accessor :external_encoding
 
     # Atribui valores padrões de configuração
@@ -77,6 +75,7 @@ module Brboleto
       self.gerador = :rghost
       self.formato = :pdf
       self.resolucao = 150
+      self.external_encoding = 'ascii-8bit'
     end
   end
 
