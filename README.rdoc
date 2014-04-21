@@ -1,5 +1,6 @@
 = brboleto
 {<img src="https://travis-ci.org/guialbuk/brboleto.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/guialbuk/brboleto]
+{<img src="https://codeclimate.com/github/guialbuk/brboleto.png" />}[https://codeclimate.com/github/guialbuk/brboleto]
 
 Gem para emissão de boletos bancários em Ruby on Rails 3.x e 4.x
 
