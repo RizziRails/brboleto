@@ -106,7 +106,6 @@ module Brboleto
     module Template
       autoload :Base,   'brboleto/boleto/template/base'
       autoload :Rghost, 'brboleto/boleto/template/rghost'
-      autoload :RghostCarne, 'brboleto/boleto/template/rghost_carne'
     end
   end
 end
